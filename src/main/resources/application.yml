@@ -1,0 +1,37 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /ESB
+c3p0:
+    mapper-location: "classpath:mapper/*.xml"
+    type-aliases-package: com.ewell.esb.bean
+    mapper-scanner-configurer:
+      base-package: com.ewell.esb.dao
+
+threadPool:
+  core-pool-size: 10
+  max-pool-size: 50
+  queue-capacity: 1000
+  keep-alive-seconds: 300
+spring:
+  datasource:
+    idleConnectionTestPeriod: 60
+    initialPoolSize: 5
+    maxIdleTime: 60
+    maxPoolSize: 10
+    minPoolSize: 5
+    maxStatements: 100
+    maxStatementsPerConnection: 3
+    preferredTestQuery: "select 1"
+    acquireRetryAttempts: 3
+    acquireRetryDelay: 1000
+    checkoutTimeout: 30000
+    user: system
+    password: manager
+    driverClass: oracle.jdbc.driver.OracleDriver
+    jdbcUrl: jdbc:oracle:thin:@(DESCRIPTION=(FAILOVER = yes)(ADDRESS = (PROTOCOL = TCP)(HOST =172.20.1.192)(PORT= 1521))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = wxcs)))
+
+
+
+a: 1
+

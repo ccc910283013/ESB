@@ -1,0 +1,48 @@
+﻿<EWELL>
+	<MQCONFIG>	
+		<!-- 队列管理器配置1 ,标签名为queueTools类connect方法参数，建议使用系统或队列管理器名-->
+		<QMGR.S63_1>
+			<!-- 主机名 -->
+			<HOSTNAME>172.20.1.25</HOSTNAME>
+			<!-- 端口 -->
+			<PORT>5063</PORT>
+			<!-- 队列管理器名称 -->
+			<QUEUEMANAGER>QMGR.S63_1</QUEUEMANAGER>
+			<!-- 通道名称 -->
+			<CHANNEL>C.S63.C</CHANNEL>
+			<!-- 队列管理器编码类型 -->
+			<CCSID>1381</CCSID>
+			<!-- 消息编码格式，没有此项时默认1386 -->
+			<CHARSET>1392</CHARSET>
+			<!-- 消息文件目录，暂不启用，默认设置就好。 -->
+			<FILEPATH>D:\test</FILEPATH>
+			<QUEUES>
+			<!-- 标签名为服务名以及序号拼接,通常情况下一个服务对应两个队列。需要操作更多队列需要指定标签序号，具体方法参考接入手册 -->
+				<BS10045_0>EQ.S63.BS10045.PUT</BS10045_0>
+				<BS10045_1>EQ.S63.BS10045.GET</BS10045_1>
+			</QUEUES>
+		</QMGR.S63_1>
+		<!-- 队列管理器配置2，需要连接多个队列管理器时启用-->
+		<!-- 队列管理器配置1 ,标签名为queueTools类connect方法参数，建议使用系统或队列管理器名-->
+		<QMGR.P63>
+			<!-- 主机名 -->
+			<HOSTNAME>172.20.1.25</HOSTNAME>
+			<!-- 端口 -->
+			<PORT>50063</PORT>
+			<!-- 队列管理器名称 -->
+			<QUEUEMANAGER>QMGR.P63_1</QUEUEMANAGER>
+			<!-- 通道名称 -->
+			<CHANNEL>C.S63.C</CHANNEL>
+			<!-- 队列管理器编码类型 -->
+			<CCSID>1381</CCSID>
+			<!-- 消息编码格式，没有此项时默认1386 -->
+			<CHARSET>1392</CHARSET>
+			<!-- 消息文件目录，暂不启用，默认设置就好。 -->
+			<FILEPATH>D:\test</FILEPATH>
+			<QUEUES>
+				<PM02004_0>EQ.S63.PM02004.PUT</PM02004_0>
+				<PM02004_1>EQ.S63.PM02004.GET</PM02004_1>
+			</QUEUES>
+		</QMGR.P63>
+	</MQCONFIG>
+</EWELL>

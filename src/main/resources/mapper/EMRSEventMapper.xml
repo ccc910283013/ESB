@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://www.mybatis.apache.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ewell.esb.dao.EMRSEventInfoDao">
+    <resultMap id="EMRSEventMap" type="EMRSEventInfo">
+        <id property="eventId" column="EVENT_ID"></id>
+        <result property="patientId" column="PATIENT_ID"></result>
+        <result property="sendingApp" column="SENDING_APP"></result>
+        <result property="areaCode" column="AREA_CODE"></result>
+        <result property="patientClass" column="PATIENT_CLASS"></result>
+        <result property="visitId" column="VISIT_ID"></result>
+        <result property="eventObject" column="EVENT_OBJECT"></result>
+        <result property="objectClass" column="OBJECT_CLASS"></result>
+        <result property="eventType" column="EVENT_TYPE"></result>
+        <result property="eventKey" column="EVENTKEY"></result>
+        <result property="operatorId" column="OPERATOR_ID"></result>
+        <result property="operatorName" column="OPERATOR_NAME"></result>
+        <result property="operationTime" column="OPERATION_TIME"></result>
+        <result property="eventStatus" column="EVENT_STATUS"></result>
+        <result property="sessionId" column="SESSION_ID"></result>
+        <result property="eventTime" column="EVENT_TIME"></result>
+    </resultMap>
+    <select id="findAllEvent" resultMap="EMRSEventMap">
+        SELECT EVENT_ID,PATIENT_ID,SENDING_APP,AREA_CODE,PATIENT_CLASS,VISIT_ID,EVENT_OBJECT,OBJECT_CLASS,EVENT_TYPE
+               EVENTKEY,OPERATOR_ID,OPERATOR_NAME,OPERATION_TIME,EVENT_STATUS,SESSION_ID,EVENT_TIME
+               FROM EMRS_EVENT_INFO WHERE 1 = 1 AND EVENT_STATUS IS NULL AND ROWNUM =  1
+    </select>
+</mapper>
