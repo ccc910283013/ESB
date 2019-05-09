@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://www.mybatis.apache.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ewell.esb.dao.ESBEventLogDao">
+
+    <insert id="insert">
+        INSERT INTO ESB_MSG_INFO_LOG SELECT * FROM ESB_MSG_INFO WHERE LOG_NO = #{_parameter}
+    </insert>
+</mapper>

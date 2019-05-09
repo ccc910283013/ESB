@@ -17,20 +17,16 @@ public class MybatisConfig {
     @Autowired
     private DataSource dataSource;
     @Bean
-    public SqlSessionFactoryBean sqlSessionFactor() {
+    public SqlSessionFactoryBean sqlSessionFactorMaster() {
         SqlSessionFactoryBean sfb = new SqlSessionFactoryBean();
-
         try {
             PathMatchingResourcePatternResolver res = new PathMatchingResourcePatternResolver();
             sfb.setDataSource(dataSource);
             sfb.setMapperLocations(res.getResources("classpath:mapper/*.xml"));
             sfb.setTypeAliasesPackage("com.ewell.esb.bean");
-            //sfb.setMapperLocations(res.getResources(mapperLocation));
-            //sfb.setTypeAliasesPackage(typeAliasesPackage);
         }catch (IOException e){
             e.printStackTrace();
         }
         return sfb;
     }
-
 }

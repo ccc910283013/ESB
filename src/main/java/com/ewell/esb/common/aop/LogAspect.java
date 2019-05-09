@@ -37,7 +37,7 @@ public class LogAspect {
             //执行目标方法
             result = joinPoint.proceed();
         } catch (Throwable e) {
-            throw new Exception(e.getMessage());
+            throw new RuntimeException(e.getMessage());
         }
         return result;
     }

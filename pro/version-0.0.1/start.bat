@@ -1,0 +1,1 @@
+java -Dloader.path=lib  -jar esb-0.0.1-SNAPSHOT.jar

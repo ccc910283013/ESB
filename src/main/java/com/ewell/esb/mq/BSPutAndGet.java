@@ -1,18 +1,16 @@
 package com.ewell.esb.mq;
 
 import com.ewell.esb.common.dto.MessageEntity;
-import com.ewell.esb.common.util.MQFactoryUtil;
+import com.ewell.esb.mq.util.MQFactoryUtil;
 import com.ewell.mq.queue.QueueTools;
 import com.ibm.mq.MQException;
 import com.ibm.mq.MQQueueManager;
 
-import java.io.IOException;
-
 public class BSPutAndGet {
     Boolean status = Boolean.FALSE;
     MQQueueManager mm = null;
-    public MessageEntity PutAndGet(String gateKeeper,String mqMsg) throws MQException,IOException {
-        QueueTools qt = MQFactoryUtil.getInstance();
+    public MessageEntity PutAndGet(String gateKeeper,String mqMsg) throws Exception {
+        QueueTools qt = MQFactoryUtil.getQueueInstance();
         MessageEntity me = new MessageEntity();
         try{
 
@@ -45,7 +43,7 @@ public class BSPutAndGet {
             me.setCode(true);
             me.setMessage(str1);
             return me;
-        }catch (MQException e) {
+        }catch (Exception e) {
             throw e;
         }finally {
             if (null != mm) {
