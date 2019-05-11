@@ -1,6 +1,6 @@
 package com.ewell.esb.mq;
 
-import com.ewell.esb.common.dto.MessageEntity;
+import com.ewell.esb.mq.dto.MessageEntity;
 import com.ewell.esb.mq.util.MQFactoryUtil;
 import com.ewell.mq.queue.QueueTools;
 import com.ibm.mq.MQException;

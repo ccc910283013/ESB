@@ -8,18 +8,32 @@ public class StaffInfo {
     private String deptCodeOld;
     private String userId;
     private String job;
+    private String hrepCode;
+    private String hrepCodeOld;
+    private String deptAlias;
 
-    @Override
-    public String toString() {
-        return "StaffInfo{" +
-                "empNo='" + empNo + '\'' +
-                ", empName='" + empName + '\'' +
-                ", userName='" + userName + '\'' +
-                ", deptCode='" + deptCode + '\'' +
-                ", deptCodeOld='" + deptCodeOld + '\'' +
-                ", userId='" + userId + '\'' +
-                ", job='" + job + '\'' +
-                '}';
+    public String getDeptAlias() {
+        return deptAlias;
+    }
+
+    public void setDeptAlias(String deptAlias) {
+        this.deptAlias = deptAlias;
+    }
+
+    public String getHrepCode() {
+        return hrepCode;
+    }
+
+    public void setHrepCode(String hrepCode) {
+        this.hrepCode = hrepCode;
+    }
+
+    public String getHrepCodeOld() {
+        return hrepCodeOld;
+    }
+
+    public void setHrepCodeOld(String hrepCodeOld) {
+        this.hrepCodeOld = hrepCodeOld;
     }
 
     public String getDeptCodeOld() {

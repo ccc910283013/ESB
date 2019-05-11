@@ -2,14 +2,12 @@ package com.ewell.esb.mq.quartz.monitor;
 import com.ewell.esb.bean.ESBEventInfo;
 import com.ewell.esb.common.util.DateUtil;
 import com.ewell.esb.mq.util.MQFactoryUtil;
-import com.ewell.esb.service.ESBEventLogService;
+import com.ewell.esb.mq.service.ESBEventLogService;
 import com.ewell.mq.queue.MessageEntity;
 import com.ewell.mq.queue.QueueTools;
 import com.ewell.mq.queue.async.EwellMQMutiImpl;
 import com.ewell.mq.queue.async.QueueCallback;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

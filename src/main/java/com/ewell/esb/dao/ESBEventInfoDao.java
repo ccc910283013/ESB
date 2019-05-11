@@ -24,12 +24,19 @@ public interface ESBEventInfoDao {
     int update(ESBEventInfo info);
 
     /**
-     * 查询平台消息
-     * @param startTime
-     * @param endTime
+     * 更新平台数据为正在处理
+     * @param date yyyy-mm-dd hh24:mi:ss
      * @return
      */
-    List<ESBEventInfo> selectByDate(@Param(value = "startTime") String startTime, @Param(value = "endTime")String endTime);
+    int updateProcessed(String date);
+
+    /**
+     * 查询平台消息
+     * @param
+     * @param currentTime
+     * @return
+     */
+    List<ESBEventInfo> selectByDate(String currentTime);
 
     /**
      *  删除主表消息

@@ -2,18 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
         "http://www.mybatis.apache.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ewell.esb.dao.RoleGrantDao">
-    <update id="updateRole">
-        UPDATE ROLE_USER T SET T.USER_DEPT = #{deptCode}
-        WHERE T.USER_ID = (SELECT SD.ID FROM STAFF_DICT SD WHERE SD.EMP_NO = #{empNo})
-        AND T.USER_DEPT = #{deptCodeOld}
-    </update>
-    <update id="updateStaffGroup">
-        UPDATE STAFF_VS_GROUP T SET T.GROUP_CODE = #{deptCode} WHERE T.EMP_NO = #{empNo} AND T.GROUP_CODE = #{deptCodeOld}
-    </update>
-    <select id="selectByEmpId" resultType="java.lang.Integer">
-        SELECT COUNT(*) FROM STAFF_VS_GROUP T WHERE T.EMP_NO = #{empNo} AND T.GROUP_CODE = #{deptCodeOld}
+
+    <select id="selectRoleDeptCode" resultType="java.lang.String">
+        SELECT T.DEPT_CODE_HIS FROM COMM.DEPT_VS_HERP T WHERE T.DEPT_CODE_HERP = #{_parameters} AND ROWNUM = 1
     </select>
-    <insert id="insertStaffGroup">
-        INSERT INTO STAFF_VS_GROUP VALUES(#{job},#{deptCode},#{empNo})
-    </insert>
+    <select id="selectWardCodeByDeptCode" resultType="java.lang.String">
+        SELECT T.WARD_CODE FROM DEPT_VS_WARD T WHERE T.DEPT_CODE = #{_parameter}
+    </select>
+    <select id="selectEmpNobyUserName" resultType="java.lang.String">
+        SELECT SD.EMP_NO FROM STAFF_DICT SD WHERE SD.USER_NAME = #{_parameter}
+    </select>
+    <update id="updateRole">
+        UPDATE ROLE_USER T
+        SET T.USER_DEPT = #{ deptCode}
+        WHERE T.USER_ID = (SELECT SD.ID FROM STAFF_DICT SD WHERE SD.USER_NAME = #{userName})
+        AND T.USER_DEPT = #{ deptCodeOld}
+    </update>
 </mapper>

@@ -34,13 +34,18 @@
         T.LOG_GUID,
         T.SERVICE_NAME
         FROM ESB_MSG_INFO T
-        WHERE T.REC_DATE >= TO_DATE(#{startTime}, 'yyyy-mm-dd hh24:mi:ss') AND
-        <![CDATA[T.REC_DATE < TO_DATE(#{endTime}, 'yyyy-mm-dd hh24:mi:ss')]]> AND
+        WHERE 1 = 1 AND
+        <![CDATA[T.REC_DATE < TO_DATE(#{_parameter}, 'yyyy-mm-dd hh24:mi:ss')]]> AND
         T.LOG_STATUS = '1'
     </select>
     <!-- 更新事件状态为执行失败-->
     <update id="update">
-        UPDATE ESB_MSG_INFO T SET T.LOG_STATUS = '2' WHERE T.LOG_NO = #{logNo}
+        UPDATE ESB_MSG_INFO T SET T.LOG_STATUS = #{logStatus} WHERE T.LOG_NO = #{logNo}
+    </update>
+    <!-- 更新事件状态为正在处理 -->
+    <update id="updateProcessed">
+        UPDATE ESB_MSG_INFO T SET T.LOG_STATUS = '3' WHERE
+        <![CDATA[T.REC_DATE < TO_DATE(#{_parameter},'yyyy-mm-dd hh24:mi:ss')]]>
     </update>
     <!-- 插入事件-->
     <sql id="ESB_MSG_INFO_SEQ">ESB_MSG_INFO_SEQ.NEXTVAL</sql>

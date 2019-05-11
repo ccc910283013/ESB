@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://www.mybatis.apache.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ewell.esb.dao.OperationDao">
+    <update id="updateOperationName">
+        UPDATE OPERATION_NAME T
+        <set>
+            <if test="operation != null and operation != ''">
+                T.OPERATION = #{ operation},
+            </if>
+            <if test="operationScale != null and operationScale != ''">
+                T.OPERATION_SCALE = #{ operationScale},
+            </if>
+            <if test="woundGrade != null and woundGrade != ''">
+                T.WOUND_GRADE = #{ woundGrade},
+            </if>
+        </set>
+        WHERE T.PATIENT_ID = #{ patId}
+        AND T.VISIT_ID = #{ visitId}
+        AND T.OPER_ID = #{ operId}
+        AND T.OPERATION_NO = #{ operationNo}
+    </update>
+</mapper>

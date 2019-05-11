@@ -1,7 +1,5 @@
 package com.ewell.esb.mq.quartz.config;
 
-import com.ewell.esb.mq.quartz.monitor.PM02004;
-import com.ewell.esb.mq.quartz.monitor.PS40003;
 import com.ewell.esb.mq.quartz.util.ExecutionJob;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
@@ -65,7 +63,6 @@ public class JobRunner implements ApplicationRunner {
                         log.error(task +" error:"+e.getMessage());
                     }
                 }else{
-
                     log.info(task+"定时任务未开启");
                 }
             });

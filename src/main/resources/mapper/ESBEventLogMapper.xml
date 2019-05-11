@@ -2,8 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
         "http://www.mybatis.apache.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ewell.esb.dao.ESBEventLogDao">
-
     <insert id="insert">
-        INSERT INTO ESB_MSG_INFO_LOG SELECT * FROM ESB_MSG_INFO WHERE LOG_NO = #{_parameter}
+        INSERT INTO ESB_MSG_INFO_LOG
+        SELECT T.LOG_NO,
+        T.QUEUE_CONN_NAME,
+        T.SERVICE_ID,
+        T.QUEUE_SEQ,
+        T.MESSAGE_ID,
+        T.MESSAGE,
+        T.REC_DATE,
+        T.SERVER_IP,
+        '0',
+        T.LOG_TYPE,
+        T.LAST_UPDATE,
+        T.LOG_GUID,
+        T.SERVICE_NAME
+        FROM ESB_MSG_INFO T WHERE LOG_NO = #{_parameter}
     </insert>
 </mapper>

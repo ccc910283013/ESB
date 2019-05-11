@@ -3,7 +3,7 @@ package com.ewell.esb.mq.quartz.monitor;
 import com.ewell.esb.bean.ESBEventInfo;
 import com.ewell.esb.common.util.DateUtil;
 import com.ewell.esb.mq.util.MQFactoryUtil;
-import com.ewell.esb.service.ESBEventLogService;
+import com.ewell.esb.mq.service.ESBEventLogService;
 import com.ewell.mq.queue.MessageEntity;
 import com.ewell.mq.queue.QueueTools;
 import com.ewell.mq.queue.async.EwellMQMutiImpl;

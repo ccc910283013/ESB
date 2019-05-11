@@ -16,6 +16,7 @@ import java.net.URL;
 public class MQFactoryUtil {
     public static final QueueTools ps40003 = new QueueTools();
     public static final QueueTools pm02004 = new QueueTools();
+    public static final QueueTools ps50005 = new QueueTools();
     private static final ConfigUtil cu = new ConfigUtil();
     /**
      * 读取配置文件信息

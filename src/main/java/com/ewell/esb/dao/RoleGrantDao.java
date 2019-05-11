@@ -3,15 +3,30 @@ package com.ewell.esb.dao;
 import com.ewell.esb.bean.StaffInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+
 @Mapper
 @Component
 public interface RoleGrantDao {
     /**
-     *  查询是否存在医疗组信息
-     * @param staff  员工信息
+     * 获取员工编号
+     * @param empNo
      * @return
      */
-    int selectByEmpId(StaffInfo staff);
+    String selectEmpNobyUserName(String empNo);
+    /**
+     * 获取病区代码
+     * @param deptCode
+     * @return
+     */
+    String selectWardCodeByDeptCode(String  deptCode);
+    /**
+     * 根据机构代码查询科室代码
+     * @param herpCode
+     * @return
+     */
+    String selectRoleDeptCode(String herpCode);
     /**
      * 更新角色信息
      * @param staff  员工信息
@@ -23,19 +38,5 @@ public interface RoleGrantDao {
      * @param staff  员工信息
      * @return
      */
-    //int insertRole(StaffInfo staff);
 
-    /**
-     * 更新医疗组信息
-     * @param staff 员工信息
-     * @return
-     */
-    int updateStaffGroup(StaffInfo staff);
-
-    /**
-     * 插入医疗组信息
-     * @param staff 员工信息
-     * @return
-     */
-    int insertStaffGroup(StaffInfo staff);
 }

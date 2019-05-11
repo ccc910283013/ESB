@@ -122,13 +122,12 @@
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger - %msg%n</pattern>
         </encoder>
     </appender>
-
     <!-- root级别 DEBUG -->
     <root>
         <!-- 打印debug级别日志及以上级别日志 -->
-        <level value="info"/>
+        <level value="info" />
         <!-- 控制台输出 -->
-        <appender-ref ref="console"/>
+        <appender-ref ref="console" />
         <!-- 文件输出 -->
         <appender-ref ref="ERROR"/>
         <appender-ref ref="INFO"/>
@@ -136,4 +135,5 @@
         <appender-ref ref="DEBUG"/>
         <appender-ref ref="TRACE"/>
     </root>
+    <logger name="org" level="WARN"/>
 </configuration>

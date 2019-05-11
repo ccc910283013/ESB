@@ -1,24 +1,22 @@
 package com.ewell.esb.common.aop;
 
-import com.ewell.esb.bean.ESBEventInfo;
-import com.ewell.esb.common.util.ThrowableUtil;
-import com.ewell.esb.service.ESBEventLogService;
+import com.ewell.esb.common.util.DealStatusConstant;
+import com.ewell.esb.mq.service.ESBEventLogService;
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
+@Slf4j
 @Component
 @Aspect
 public class EventDealAspect {
-    private static final Logger logger = LoggerFactory.getLogger(EventDealAspect.class);
     @Autowired
     ESBEventLogService esbImpl;
     /**
@@ -42,7 +40,7 @@ public class EventDealAspect {
         } catch (Throwable e) {
             throw new Exception(e.getMessage());
         }
-        esbImpl.esbEventTransDeal(joinPoint,"0");
+        esbImpl.esbEventTransDeal(joinPoint,DealStatusConstant.SUCCESS);
         return result;
     }
     /**
@@ -53,6 +51,6 @@ public class EventDealAspect {
      */
     @AfterThrowing(pointcut = "EventPointcut()", throwing = "e")
     public void logAfterThrowing(JoinPoint joinPoint, Throwable e) {
-        esbImpl.esbEventTransDeal(joinPoint,"2");
+        esbImpl.esbEventTransDeal(joinPoint,DealStatusConstant.FAILED);
     }
 }
