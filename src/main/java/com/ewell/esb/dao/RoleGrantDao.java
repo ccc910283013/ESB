@@ -38,5 +38,5 @@ public interface RoleGrantDao {
      * @param staff  员工信息
      * @return
      */
-
+    int insertRole(StaffInfo staff);
 }

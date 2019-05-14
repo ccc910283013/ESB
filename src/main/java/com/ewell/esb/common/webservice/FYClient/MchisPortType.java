@@ -1,6 +1,8 @@
 
 package com.ewell.esb.common.webservice.FYClient;
 
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 import javax.jws.Oneway;
 import javax.jws.WebMethod;
@@ -22,6 +24,7 @@ import javax.xml.ws.ResponseWrapper;
 @XmlSeeAlso({
     ObjectFactory.class
 })
+
 public interface MchisPortType {
 
 

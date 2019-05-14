@@ -15,6 +15,8 @@ threadPool:
   keep-alive-seconds: 300
 #配置数据源
 spring:
+  profiles:
+    active: pro
   datasource:
     druid:
       type: com.alibaba.druid.pool.DruidDataSource

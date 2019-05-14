@@ -1,6 +1,8 @@
 
 package com.ewell.esb.common.webservice.FYClient;
 
+import org.springframework.stereotype.Component;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import javax.xml.namespace.QName;
@@ -18,6 +20,7 @@ import javax.xml.ws.WebServiceFeature;
  * 
  */
 @WebServiceClient(name = "Mchis", targetNamespace = "http://webservice.zhending.com", wsdlLocation = "http://10.75.93.91:8090/mchis-controller/services/Mchis?wsdl")
+@Component
 public class Mchis
     extends Service
 {

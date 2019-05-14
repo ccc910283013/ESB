@@ -20,7 +20,7 @@ import java.util.List;
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class RestTemplateConfig {
 
-    @Autowired
+    @Resource
     private CloseableHttpClient httpClient;
 
     @Bean

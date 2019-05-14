@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping
 public class IndexController {
-    @Autowired
+    @Resource
     private TestDao t;
     @RequestMapping(method = RequestMethod.GET,value = "/test02",produces = "text/plain;charset=utf-8")
     @ResponseBody
@@ -40,7 +41,7 @@ public class IndexController {
         List<String> a = new ArrayList<>();
         a.add("a");
         a.add("b");
-        a.add("c");
+        a.add("cb");
         return new BaseResponse<>("0", "更新成功", a);
     }
 }

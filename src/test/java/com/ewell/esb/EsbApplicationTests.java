@@ -28,13 +28,11 @@ public class EsbApplicationTests {
     @Autowired
     private RestTemplate restTemplate;
     @Autowired
-    ESBEventLogService service;
-    //@Test
+    private ESBEventLogService service;
+    @Test
     public void contextLoads() {
-        System.out.println("-------------------");
-        Date date = new Date();
-        Boolean status = service.esbEventDeal(DateUtil.timeStampToDate(date.getTime()));
-        System.out.println("-----------"+status);
+        Boolean b = service.esbEventDeal(DateUtil.getCurrentTime());
+        System.out.println("---------------"+b);
     }
     //@Test
     public  void testPost() throws Exception{

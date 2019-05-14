@@ -12,6 +12,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Date;
@@ -22,27 +23,26 @@ import java.util.Properties;
 @Component
 @Order(value = 2)
 public class JobRunner implements ApplicationRunner {
-    private Properties properties = new Properties();
     @Value("${job.Enable}")
     private boolean jobEnable;
     @Value("${job.Context}")
     private String jobContext;
-    @Autowired
-    Environment environment;
+    @Resource
+    private Environment environment;
     private Object target;
     private Method method;
     private static final String JOB_NAME = "TASK_";
-    @Autowired
+    @Resource
     private Scheduler scheduler;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("--------------------注入定时任务---------------------");
-        if (true ==jobEnable){
+        if (jobEnable){
             List<String> taskList = Arrays.asList(jobContext.split(","));
             taskList.forEach(task ->{
                 Boolean flag = environment.getProperty("job."+task+".Enable",Boolean.class);
-                if (flag == true){
+                if (flag){
                     QuartzJobConfig jobConfig = QuartzJobConfig.getInstance(task);
                     String cronExpression = environment.getProperty("job."+task+".cronExpression");
                     try {

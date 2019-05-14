@@ -24,11 +24,11 @@ public interface ESBEventInfoDao {
     int update(ESBEventInfo info);
 
     /**
-     * 更新平台数据为正在处理
-     * @param date yyyy-mm-dd hh24:mi:ss
+     * 更新正在处理的消息状态
+     * @param info
      * @return
      */
-    int updateProcessed(String date);
+    int updateProcessed(List<ESBEventInfo> info);
 
     /**
      * 查询平台消息

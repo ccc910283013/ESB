@@ -22,12 +22,14 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
+
 @Slf4j
 @Service
 @Transactional(rollbackFor=Exception.class)
 public class OperationDealServiceImpl implements OperationDealService {
-    @Autowired
-    OperationDao operDao;
+    @Resource
+    private OperationDao operDao;
     @Override
     @EventDeal
     public boolean modifyOperationName(ESBEventInfo info) throws Exception {
@@ -40,7 +42,7 @@ public class OperationDealServiceImpl implements OperationDealService {
                     StringUtils.isNotBlank(xmlObject.getMsgInfo().getMsg().getOPER_ID())&&
                     StringUtils.isNotBlank(xmlObject.getMsgInfo().getMsg().getOPERATION_NO())){
                 int result = operDao.updateOperationName(operName);
-                status = result>0?true:false;
+                status = result>0;
             }else{
                 throw new Exception("值不正确");
             }

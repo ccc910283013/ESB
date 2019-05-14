@@ -8,6 +8,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.Future;
@@ -15,7 +16,7 @@ import java.util.concurrent.Future;
 @Async
 public class ExecutionJob extends QuartzJobBean{
 
-    @Autowired
+    @Resource
     private ThreadPoolTaskExecutor executor;
     @Override
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
@@ -26,7 +27,6 @@ public class ExecutionJob extends QuartzJobBean{
             QuartzRunnable task = new QuartzRunnable(beanName, methodName, params);
             Future<?> future = executor.submit(task);
             future.get();
-            System.out.println("tesk: "+beanName+" finished");
         }catch (Exception e){
             log.error("定时器异常------>"+e.getMessage());
         }

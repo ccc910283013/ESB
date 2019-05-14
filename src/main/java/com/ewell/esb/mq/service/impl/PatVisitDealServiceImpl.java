@@ -22,12 +22,14 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
+
 @Slf4j
 @Service
 @Transactional(rollbackFor=Exception.class)
 public class PatVisitDealServiceImpl implements PatVisitDealService {
-    @Autowired
-    PatVisitDao pvDao;
+    @Resource
+    private PatVisitDao pvDao;
     @Override
     @EventDeal
     public boolean modifyPatSign(ESBEventInfo info) throws Exception {

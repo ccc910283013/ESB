@@ -18,20 +18,21 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 @Slf4j
 @Service
 public class ESBEventLogServiceImpl implements ESBEventLogService {
-    @Autowired
-    ESBEventInfoDao dao;
-    @Autowired
-    ESBEventLogDao logDao;
-    @Autowired
-    HISEventDealService hisService;
-    @Autowired
-    OperationDealService operService;
-    @Autowired
-    PatVisitDealService pvService;
+    @Resource
+    private ESBEventInfoDao dao;
+    @Resource
+    private ESBEventLogDao logDao;
+    @Resource
+    private HISEventDealService hisService;
+    @Resource
+    private OperationDealService operService;
+    @Resource
+    private PatVisitDealService pvService;
 
     @Override
     @Transactional(rollbackFor = Exception.class,propagation = Propagation.REQUIRES_NEW)
@@ -71,7 +72,7 @@ public class ESBEventLogServiceImpl implements ESBEventLogService {
         boolean status = false;
         List<ESBEventInfo> infoList = dao.selectByDate(currentTime);
         if (infoList.size() > 0){
-            int result = dao.updateProcessed(currentTime);
+            int result = dao.updateProcessed(infoList);
             System.out.println(infoList.size());
             for (int i = 0; i < infoList.size(); i++) {
                 ESBEventInfo info = infoList.get(i);

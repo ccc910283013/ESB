@@ -18,4 +18,15 @@
         WHERE T.USER_ID = (SELECT SD.ID FROM STAFF_DICT SD WHERE SD.USER_NAME = #{userName})
         AND T.USER_DEPT = #{ deptCodeOld}
     </update>
+    <insert id="insertRole">
+        INSERT INTO ROLE_USER(ROLE_ID,
+        USER_ID,
+        PRIORITY,
+        START_DATE,
+        END_DATE,
+        TIME_SWITCH,
+        CLASS_ID,
+        USER_DEPT) VALUES(#{ roleId},(SELECT SD.ID FROM STAFF_DICT SD WHERE SD.USER_NAME = #{userName}),
+        '1',TO_DATE('1753-01-01','yyyy-mm-dd'),TO_DATE('9998-12-31','yyyy-mm-dd'),'0',#{ classId},#{ deptCode})
+    </insert>
 </mapper>

@@ -12,6 +12,8 @@ import org.springframework.scheduling.quartz.AdaptableJobFactory;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
+
 /**
  * 定时任务配置
  * @author
@@ -25,7 +27,7 @@ public class QuartzConfig {
 	@Component("quartzJobFactory")
 	public class QuartzJobFactory extends AdaptableJobFactory {
 
-		@Autowired
+		@Resource
 		private AutowireCapableBeanFactory capableBeanFactory;
 
 		@Override

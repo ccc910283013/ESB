@@ -28,7 +28,7 @@ public class MonitorRunner implements ApplicationRunner {
     private Method method;
     @Override
     public void run(ApplicationArguments args) {
-        if (monitorEnable == true){
+        if (monitorEnable){
             System.out.println("--------------------监听队列消息---------------------");
             List<String> queueList = Arrays.asList(monitorQueue.split(","));
             queueList.forEach(queue ->{
