@@ -1,5 +1,6 @@
 package com.ewell.esb.common.aop;
 
+import com.ewell.esb.common.exception.EventFilterException;
 import com.ewell.esb.common.util.DealStatusConstant;
 import com.ewell.esb.mq.service.ESBEventLogService;
 import lombok.extern.slf4j.Slf4j;
@@ -37,8 +38,8 @@ public class EventDealAspect {
         try {
             //执行目标方法
             result = joinPoint.proceed();
-        } catch (Throwable e) {
-            throw new Exception(e.getMessage());
+        } catch (Throwable e2){
+            throw new Exception(e2);
         }
         esbImpl.esbEventTransDeal(joinPoint,DealStatusConstant.SUCCESS);
         return result;

@@ -1,5 +1,12 @@
 package com.ewell.esb.bean;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
 public class ESBEventInfo {
     /**
      * 自增内码,QMGR.P63
@@ -54,126 +61,4 @@ public class ESBEventInfo {
      */
     private String serviceName;
 
-    @Override
-    public String toString() {
-        return "ESBEventInfo{" +
-                "logNo='" + logNo + '\'' +
-                ", queueConnectName='" + queueConnectName + '\'' +
-                ", serviceId='" + serviceId + '\'' +
-                ", queueSeq='" + queueSeq + '\'' +
-                ", messageId='" + messageId + '\'' +
-                ", message='" + message + '\'' +
-                ", recDate='" + recDate + '\'' +
-                ", serverIP='" + serverIP + '\'' +
-                ", logStatus='" + logStatus + '\'' +
-                ", logType='" + logType + '\'' +
-                ", lastUpdate='" + lastUpdate + '\'' +
-                ", logGuid='" + logGuid + '\'' +
-                ", serviceName='" + serviceName + '\'' +
-                '}';
-    }
-
-    public String getLogNo() {
-        return logNo;
-    }
-
-    public void setLogNo(String logNo) {
-        this.logNo = logNo;
-    }
-
-    public String getQueueConnectName() {
-        return queueConnectName;
-    }
-
-    public void setQueueConnectName(String queueConnectName) {
-        this.queueConnectName = queueConnectName;
-    }
-
-    public String getServiceId() {
-        return serviceId;
-    }
-
-    public void setServiceId(String serviceId) {
-        this.serviceId = serviceId;
-    }
-
-    public String getQueueSeq() {
-        return queueSeq;
-    }
-
-    public void setQueueSeq(String queueSeq) {
-        this.queueSeq = queueSeq;
-    }
-
-    public String getMessageId() {
-        return messageId;
-    }
-
-    public void setMessageId(String messageId) {
-        this.messageId = messageId;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public String getRecDate() {
-        return recDate;
-    }
-
-    public void setRecDate(String recDate) {
-        this.recDate = recDate;
-    }
-
-    public String getServerIP() {
-        return serverIP;
-    }
-
-    public void setServerIP(String serverIP) {
-        this.serverIP = serverIP;
-    }
-
-    public String getLogStatus() {
-        return logStatus;
-    }
-
-    public void setLogStatus(String logStatus) {
-        this.logStatus = logStatus;
-    }
-
-    public String getLogType() {
-        return logType;
-    }
-
-    public void setLogType(String logType) {
-        this.logType = logType;
-    }
-
-    public String getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(String lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
-    public String getLogGuid() {
-        return logGuid;
-    }
-
-    public void setLogGuid(String logGuid) {
-        this.logGuid = logGuid;
-    }
-
-    public String getServiceName() {
-        return serviceName;
-    }
-
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
-    }
 }

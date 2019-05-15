@@ -41,7 +41,15 @@ public class PatVisitDealServiceImpl implements PatVisitDealService {
             patVisit.setVisitId(xmlObject.getMsgInfo().getMsg().getINHOSP_NUM());
             patVisit.setBodyHeight(xmlObject.getMsgInfo().getMsg().getHEIGHT());
             patVisit.setBodyWeight(xmlObject.getMsgInfo().getMsg().getWEIGHT());
-            int result = pvDao.updatePatSign(patVisit);
+            int result = 0;
+            if (StringUtils.isNotEmpty(patVisit.getBodyHeight())&&(StringUtils.isNotEmpty(patVisit.getBodyWeight()))){
+                result = pvDao.updatePatSign(patVisit);
+            }else{
+                /**
+                 * 患者拒测
+                 */
+                result = 1;
+            }
             status = result>0;
         }catch (Exception e1){
             throw e1;

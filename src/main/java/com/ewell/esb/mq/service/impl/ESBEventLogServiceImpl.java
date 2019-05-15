@@ -2,6 +2,7 @@ package com.ewell.esb.mq.service.impl;
 
 import com.ewell.esb.bean.ESBEventInfo;
 import com.ewell.esb.common.aop.EventDeal;
+import com.ewell.esb.common.exception.EventFilterException;
 import com.ewell.esb.common.util.DealStatusConstant;
 import com.ewell.esb.dao.ESBEventInfoDao;
 import com.ewell.esb.dao.ESBEventLogDao;
@@ -73,7 +74,7 @@ public class ESBEventLogServiceImpl implements ESBEventLogService {
         List<ESBEventInfo> infoList = dao.selectByDate(currentTime);
         if (infoList.size() > 0){
             int result = dao.updateProcessed(infoList);
-            System.out.println(infoList.size());
+            //System.out.println(infoList.size());
             for (int i = 0; i < infoList.size(); i++) {
                 ESBEventInfo info = infoList.get(i);
                 String serviceId = info.getServiceId();

@@ -3,6 +3,7 @@ package com.ewell.esb.mq.service.impl;
 import com.ewell.esb.bean.ESBEventInfo;
 import com.ewell.esb.bean.StaffInfo;
 import com.ewell.esb.common.aop.EventDeal;
+import com.ewell.esb.common.exception.EventFilterException;
 import com.ewell.esb.common.util.StringUtils;
 import com.ewell.esb.dao.OperationDao;
 import com.ewell.esb.mq.dto.MsgPM02004;
@@ -70,9 +71,11 @@ public class HISEventDealServiceImpl implements HISEventDealService {
                         case "医生":
                             staff.setRoleId("6");
                             staff.setClassId("3");
+                            break;
                         case "护士":
                             staff.setRoleId("4");
                             staff.setClassId("2");
+                            break;
                     }
                     roleResult = roleDao.insertRole(staff);
                 } else {

@@ -20,7 +20,6 @@ import javax.xml.ws.WebServiceFeature;
  * 
  */
 @WebServiceClient(name = "Mchis", targetNamespace = "http://webservice.zhending.com", wsdlLocation = "http://10.75.93.91:8090/mchis-controller/services/Mchis?wsdl")
-@Component
 public class Mchis
     extends Service
 {

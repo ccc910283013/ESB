@@ -34,7 +34,7 @@ public class PS40003 {
             mutiImpl.run(new QueueCallback() {
                 @Override
                 public void onMessage(MessageEntity message) throws Exception {
-                    System.out.println(message.getMsg());
+                    //System.out.println(message.getMsg());
                     ESBEventInfo info = new ESBEventInfo();
                     info.setQueueConnectName("QMGR.P63");
                     info.setServiceId("PS40003");
