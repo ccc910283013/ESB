@@ -1,4 +1,4 @@
-package com.ewell.esb.common.util;
+package com.ewell.esb.common.config.handler;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;

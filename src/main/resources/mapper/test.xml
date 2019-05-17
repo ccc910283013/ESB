@@ -5,4 +5,11 @@
     <select id="findSum" resultType="java.lang.String">
         SELECT COUNT(*) FROM EMRS_EVENT_INFO
     </select>
+
+    <select id="findSum1" resultType="java.lang.String">
+        SELECT COUNT(*) FROM EMRS_EVENT_INFO
+    </select>
+    <insert id="test">
+        insert into esb_msg_info values('9999','QMGR.P63','test','','','',sysdate,'','0','1',sysdate,'','')
+    </insert>
 </mapper>

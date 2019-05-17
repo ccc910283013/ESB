@@ -9,8 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 /**
  *  跨域请求
  */
-//@Configuration
-//@EnableWebMvc
+@Configuration
 public class CorsConfig implements WebMvcConfigurer {
 
     @Override

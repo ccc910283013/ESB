@@ -1,10 +1,14 @@
 package com.ewell.esb;
 
+import com.ewell.esb.bean.ESBEventInfo;
 import com.ewell.esb.common.util.DateUtil;
 import com.ewell.esb.common.webservice.FYClient.Mchis;
 import com.ewell.esb.common.webservice.FYClient.MchisPortType;
 
+import com.ewell.esb.dao.TestDao;
 import com.ewell.esb.mq.service.ESBEventLogService;
+import com.ewell.esb.mq.service.TestService;
+import com.ewell.esb.mq.util.MQFactoryUtil;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
@@ -26,14 +30,30 @@ import java.util.Date;
 @SpringBootTest
 public class EsbApplicationTests {
     @Autowired
+    private TestService testService;
+    @Autowired
     private RestTemplate restTemplate;
     @Autowired
     private ESBEventLogService service;
     @Test
-    public void contextLoads() {
-        Boolean b = service.esbEventDeal(DateUtil.getCurrentTime());
-        System.out.println("---------------"+b);
+    public void contextLoads() throws Exception{
+        //Boolean b = service.esbEventDeal(DateUtil.getCurrentTime());
+        try {
+        }catch (Exception e){
+            e.printStackTrace();
+
+        }
+            testService.test01();
+
+        /*
+        try {
+            testService.test02();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        */
     }
+
     //@Test
     public  void testPost() throws Exception{
         URI url = new URI(

@@ -2,11 +2,8 @@ server:
   port: 8080
   servlet:
     context-path: ${server.contextPath}
-c3p0:
-    mapper-location: "classpath:mapper/*.xml"
-    type-aliases-package: com.ewell.esb.bean
-    mapper-scanner-configurer:
-      base-package: com.ewell.esb.dao
+
+muti-datasource-open: false
 
 threadPool:
   core-pool-size: 10
@@ -18,15 +15,50 @@ spring:
   profiles:
     active: pro
   datasource:
+#核心业务数据源,测试库
     druid:
       type: com.alibaba.druid.pool.DruidDataSource
       driverClassName: ${dataSource.driverClass}
       url: ${dataSource.url}
       username: ${dataSource.user}
       password: ${dataSource.password}
-      #url: jdbc:oracle:thin:@(DESCRIPTION=(FAILOVER = yes)(ADDRESS = (PROTOCOL = TCP)(HOST =172.20.1.210)(PORT= 1521))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = oracle10)))
-      #username: login
-      #password: loginmanager
+      # 初始化连接大小
+      initial-size: 5
+      # 最小空闲连接数
+      min-idle: 5
+      max-active: 20
+      max-wait: 30000
+      # 可关闭的空闲连接间隔时间
+      time-between-eviction-runs-millis: 60000
+      # 配置连接在池中的最小生存时间
+      min-evictable-idle-time-millis: 300000
+      validation-query: select '1' from dual
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      # 打开PSCache，并且指定每个连接上PSCache的大小
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      max-pool-prepared-statement-per-connection-size: 20
+      # 配置监控统计拦截的filters
+      filters: stat
+
+      stat-view-servlet:
+        url-pattern: /druid/*
+        reset-enable: false
+        login-username: admin
+        login-password: 123456
+
+      web-stat-filter:
+        url-pattern: /*
+        exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
+#其他业务数据源,正式库
+    cluster-druid:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driverClassName: ${dataSource.driverClass}
+      url: jdbc:oracle:thin:@(DESCRIPTION=(FAILOVER = yes)(ADDRESS = (PROTOCOL = TCP)(HOST =172.20.1.210)(PORT= 1521))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = oracle10)))
+      username: login
+      password: loginmanager
       # 初始化连接大小
       initial-size: 5
       # 最小空闲连接数
@@ -59,7 +91,6 @@ spring:
         exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
 
 
-
 httpclient:
   connectTimeout: 20000
   requestTimeout: 20000
@@ -70,5 +101,6 @@ httpclient:
   closeIdleConnectionWaitTimeSecs: 300
 cxf:
   path: /ewell
+
 
 

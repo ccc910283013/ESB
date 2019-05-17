@@ -43,7 +43,7 @@ public class PM02004 {
                     info.setMessageId("");
                     info.setMessage(message.getMsg());
                     info.setRecDate(DateUtil.getCurrentTime());
-                    System.out.println("---------------");
+                    //System.out.println("---------------");
                     info.setServerIP(MQFactoryUtil.getCUInstance("QMGR.P63").getHostName());
                     info.setLogStatus("1");
                     info.setLogType("1");

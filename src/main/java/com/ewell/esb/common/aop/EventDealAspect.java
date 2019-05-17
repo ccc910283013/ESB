@@ -34,14 +34,14 @@ public class EventDealAspect {
      */
     @Around("EventPointcut()")
     public Object logAround(ProceedingJoinPoint joinPoint) throws Exception{
-        Object result = null;
+        Boolean result = null;
         try {
             //执行目标方法
-            result = joinPoint.proceed();
+            result = (Boolean) joinPoint.proceed();
         } catch (Throwable e2){
             throw new Exception(e2);
         }
-        esbImpl.esbEventTransDeal(joinPoint,DealStatusConstant.SUCCESS);
+        esbImpl.esbEventTransDeal(joinPoint,result?DealStatusConstant.SUCCESS:DealStatusConstant.FAILED);
         return result;
     }
     /**

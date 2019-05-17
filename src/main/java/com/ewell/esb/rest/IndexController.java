@@ -1,13 +1,11 @@
 package com.ewell.esb.rest;
 
 import com.ewell.esb.bean.PatVisitInfo;
+import com.ewell.esb.bean.StaffInfo;
 import com.ewell.esb.common.dto.BaseResponse;
 import com.ewell.esb.dao.TestDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -18,6 +16,12 @@ import java.util.List;
 public class IndexController {
     @Resource
     private TestDao t;
+    @RequestMapping(method = RequestMethod.POST,value = "/test02",produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String test01(@RequestBody StaffInfo info){
+        System.out.println(info.toString());
+        return "";
+    }
     @RequestMapping(method = RequestMethod.GET,value = "/test02",produces = "text/plain;charset=utf-8")
     @ResponseBody
     public String test02(){

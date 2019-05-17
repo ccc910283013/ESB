@@ -16,8 +16,7 @@ import javax.annotation.Resource;
 
 /**
  * 定时任务配置
- * @author
- * @date 2019-01-07
+ * @author cc
  */
 @Configuration
 public class QuartzConfig {

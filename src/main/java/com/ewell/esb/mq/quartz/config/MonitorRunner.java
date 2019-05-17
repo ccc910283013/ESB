@@ -1,17 +1,12 @@
 package com.ewell.esb.mq.quartz.config;
 
-import com.ewell.esb.common.util.SpringContextHolder;
-import com.ewell.esb.mq.quartz.util.ExecutionJob;
+import com.ewell.esb.common.config.handler.SpringContextHolder;
 import lombok.extern.slf4j.Slf4j;
-import org.quartz.*;
-import org.quartz.impl.triggers.CronTriggerImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ReflectionUtils;
 
 import java.lang.reflect.Method;
 import java.util.*;

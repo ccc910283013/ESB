@@ -44,6 +44,7 @@ public class ESBEventLogServiceImpl implements ESBEventLogService {
         Object[] argValues = joinPoint.getArgs();
         //参数名称
         String[] argNames = ((MethodSignature)joinPoint.getSignature()).getParameterNames();
+        //判断是否存在参数值
         if (argValues.length > 0) {
             ESBEventInfo e = (ESBEventInfo) argValues[0];
             e.setLogStatus(con.getStatus());
@@ -70,29 +71,29 @@ public class ESBEventLogServiceImpl implements ESBEventLogService {
     @Override
     @Transactional(propagation = Propagation.NOT_SUPPORTED)
     public boolean esbEventDeal(String currentTime){
-        boolean status = false;
+        boolean status = true;
         List<ESBEventInfo> infoList = dao.selectByDate(currentTime);
+        //判断是否有待处理事件
         if (infoList.size() > 0){
             int result = dao.updateProcessed(infoList);
             //System.out.println(infoList.size());
-            for (int i = 0; i < infoList.size(); i++) {
-                ESBEventInfo info = infoList.get(i);
+            infoList.forEach(info->{
                 String serviceId = info.getServiceId();
                 try {
                     if ("PM02004".equals(serviceId)) {
-                        status = hisService.modifyUserGrant(info);
+                        hisService.modifyUserGrant(info);
                     }
                     if ("PS40003".equals(serviceId)) {
-                        status = pvService.modifyPatSign(info);
+                        pvService.modifyPatSign(info);
                     }
                     //test
                     if ("PS50005".equals(serviceId)) {
-                        status = operService.modifyOperationName(info);
+                        operService.modifyOperationName(info);
                     }
                 } catch (Exception e) {
                     log.error("服务" + serviceId + "执行异常,logNo=" + info.getLogNo() + "------->" + e.getMessage());
                 }
-            }
+            });
         }
         return status;
     }
